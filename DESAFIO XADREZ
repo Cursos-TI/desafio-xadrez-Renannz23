@@ -1,0 +1,129 @@
+#include <stdio.h>
+
+
+// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
+// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+
+int main() {
+    // Nível Novato - Movimentação das Peças
+    
+    // Constantes para numero de casas
+    const int Bispo_Passos = 5;
+    const int Torre_Passos = 5;
+    const int Rainha_Passos = 8;
+
+    // --- Movimentação do Bispo ---
+    // Usando for: 5 casas na diagonal
+    printf("Bispo (diagonal superior direita):\n");
+    for (int i = 0; i < Bispo_Passos; i++) {
+        printf("cima\n");
+        printf("direita\n");
+    }
+    printf("\n");
+
+    // --- Movimentação da Torre ---
+    // Usando while: 5 casas para a direita.
+    printf("Torre (para a direita):\n");
+    int i = 0;
+    while (i < Torre_Passos) {
+        printf("direita\n");
+        i++;
+    }
+    printf("\n");
+
+    // --- Movimentação da Rainha ----
+    // Usando do-while: 8 casas para a esquerda.
+    printf("Rainha (para a esquerda):\n");
+    int j = 0;
+    do {
+        printf("esquerda\n");
+        j++;
+    } while (j < Rainha_Passos);
+    printf("\n");
+
+
+
+
+    // Nível Aventureiro - Movimentação do Cavalo
+    const int Cavalo_Vertical = 2; // 2 casa para baixp
+    const int Cavalo_Horizontal = 1; // 1 casa para a esquerda
+
+    printf("Cavalo (em L: 2 para baixo, 1 para esquerda):\n");
+
+    //Lop externo: controla o movimento vertical
+    for (int v = 0; v < Cavalo_Vertical; v++) {
+        printf("baixo\n");
+
+    //Loop interno: controa a movimento horizontal
+    int h = 0;
+    while (h < Cavalo_Horizontal) {
+        printf("esquerda\n");
+        h++;
+
+      }    
+    }
+    printf("\n");
+
+    // Nível Mestre - Funções Recursivas e Loops Aninhados
+    
+    // --- Movimentações das peças por funções recursivas ---
+    
+    // Bispo diagonal superior direita
+    void moverBispo(int passos) {
+        if (passos == 0) return; // parada
+        printf("Cima\n");
+        printf("direita\n");
+        moverBispo(passos - 1); // recursiva
+    }
+
+    //Torre direita
+    void moverTorre(int passos) {
+        if (passos == 0) return;
+        printf("direia\n");
+        moverTorre(passos - 1);
+    }
+
+    //Rainha esquerda
+    void moverRainha(int passos) {
+        if (passos == 0)return;
+        printf("esquerda\n");
+        moverRainha(passos- 1);
+    }
+
+    //--- Funcoes recursivas ---
+    printf("Bispo (recursivo):\n");
+    moverBispo(5);
+    printf("\n");
+
+    printf("Torre (recursivo):\n");
+    moverTorre(5);
+    printf("\n");
+
+    printf("Rainha (recursivo):\n");
+    moverRainha(8);
+    printf("\n");
+
+    // --Cavalo com loops avançados---
+    printf("Cavalo (avançado com break/continue:\n)");
+
+    for(int v = 0, h = 0; v < 3 && h < 2; v++, h++) {
+        if (v == 2) {
+            break;
+        }
+        
+        printf("baixo\n");
+
+        for (int k = 0; k < 3; k++) {
+            if (k > 0) {
+                continue;
+            }
+            printf("esquerda\n");
+        }
+
+    }
+    printf("\n");
+    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
+    // Inclua o uso de continue e break dentro dos loops.
+
+    return 0;
+}
